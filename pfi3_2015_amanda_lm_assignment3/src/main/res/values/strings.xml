@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Pfi3_2015_Amanda_LM_assignment3</string>
+    <string name="action_settings">Settings</string>
+    <string-array name="station">
+        <item>Lund C</item>
+        <item>Ystad Klostret</item>
+        <item>Lund Bankgatan</item>
+        <item>Malmö Triangeln</item>
+        <item>Köpenhamn H</item>
+        <item>Halmstad C</item>
+    </string-array>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="buttonSearch">Sök</string>
+    <string name="textViewFran">Från:</string>
+    <string name="textViewTill">Till:</string>
+</resources>
