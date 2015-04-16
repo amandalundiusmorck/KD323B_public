@@ -60,7 +60,7 @@
                 android:layout_gravity="left|top"
                 android:groupIndicator="@null"
                 android:divider="@android:color/darker_gray"
-                android:dividerHeight="@dimen/customDivier" />
+                android:dividerHeight="@dimen/customDivier"/>
         </LinearLayout>
 
 </FrameLayout>
