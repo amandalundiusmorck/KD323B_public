@@ -39,13 +39,17 @@ public class Adapter extends BaseExpandableListAdapter{
         LayoutInflater li = (LayoutInflater) this.c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = li.inflate(R.layout.list_collapsed,null);
 
+        Journey journey = j.get(groupPosition);
+
         TextView depTime = (TextView) convertView.findViewById(R.id.depTime);
-        String dep = j.get(groupPosition).getDepDateTime().toString();
-        depTime.setText(dep);
+        String departure = journey.getDepDateTime().toString();
+        depTime.setText(departure);
 
         TextView arrTime = (TextView) convertView.findViewById(R.id.arrTime);
-        String arr = j.get(groupPosition).getArrDateTime().toString();
-        arrTime.setText(arr);
+        String arrival = journey.getArrDateTime().toString();
+        arrTime.setText(arrival);
+
+
         return convertView;
     }
 
@@ -54,13 +58,16 @@ public class Adapter extends BaseExpandableListAdapter{
         LayoutInflater li = (LayoutInflater) this.c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = li.inflate(R.layout.list_expanded,null);
 
+        Journey journey = j.get(groupPosition);
+
         TextView depTimeDev = (TextView) convertView.findViewById(R.id.depTimeDev);
-        String dev = j.get(groupPosition).getDepTimeDeviation();
-        depTimeDev.setText(dev);
+        String deviation = journey.getDepTimeDeviation();
+        depTimeDev.setText(deviation);
 
         TextView travelMinutes = (TextView) convertView.findViewById(R.id.travelMinutes);
-        String min = j.get(groupPosition).getTravelMinutes();
-        travelMinutes.setText(min);
+        String time = journey.getTravelMinutes();
+        travelMinutes.setText(time);
+
         return convertView;
     }
 
