@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Pfi3_2015_Amanda_LM_assignment3</string>
+    <string name="app_name">Skånetrafiken</string>
     <string name="action_settings">Settings</string>
     <string-array name="station">
         <item>Lund C</item>
