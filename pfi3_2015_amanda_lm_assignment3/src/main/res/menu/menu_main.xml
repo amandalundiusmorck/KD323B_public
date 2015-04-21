@@ -5,7 +5,8 @@
         android:orderInCategory="100" app:showAsAction="never" />
 
     <item android:id="@+id/action_search"
-        android:title="Action Search"
+        android:icon="@drawable/ic_action_refresh"
+        android:title="Refresh"
         app:showAsAction="always"
-        android:icon="@drawable/ic_action_refresh"/>
+        android:orderInCategory="1"/>
 </menu>
