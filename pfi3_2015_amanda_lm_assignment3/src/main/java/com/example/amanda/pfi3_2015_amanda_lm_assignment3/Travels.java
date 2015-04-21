@@ -7,9 +7,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import android.os.AsyncTask;
 import android.view.MenuItem;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 
@@ -17,9 +19,13 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Travels extends Fragment {
+public class Travels extends Fragment implements AdapterView.OnItemSelectedListener {
 
     ArrayList<Journey> journeyList = new ArrayList<Journey>();
+
+        private Spinner spinnerFrom;
+        private Spinner spinnerTo;
+        private Adapter adapter;
 
     public Travels() {
         // Required empty public constructor
@@ -31,8 +37,16 @@ public class Travels extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_travels, container, false);
+
+        spinnerFrom = (Spinner) view.findViewById(R.id.spinner);
+        spinnerTo = (Spinner) view.findViewById(R.id.spinner2);
+
         ExpandableListView expl = (ExpandableListView) view.findViewById(R.id.expandableListView);
-        expl.setAdapter(new Adapter(getActivity(), journeyList));
+        adapter = new Adapter(getActivity(),journeyList);
+        expl.setAdapter(adapter);
+
+        spinnerFrom.setOnItemSelectedListener(this);
+        spinnerTo.setOnItemSelectedListener(this);
 
         return view;
 
@@ -44,13 +58,37 @@ public class Travels extends Fragment {
         int id = item.getItemId();
         if (id == R.id.action_search) {
             Log.i("action_search", "started");
+
+            int fromStation = spinnerFrom.getSelectedItemPosition();
+            int toStation = spinnerTo.getSelectedItemPosition();
+
+
+            String[] stationNo = getResources().getStringArray(R.array.station);
+            String searchURL = Constants.getURL(stationNo[fromStation], stationNo[toStation], 14);
+            journeyList.clear();
+
+            new DoInBackground().execute(searchURL);
+
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    private void finishedSearch(){
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        int fromStation = spinnerFrom.getSelectedItemPosition();
+        int toStation = spinnerTo.getSelectedItemPosition();
+
+        String[] stationNo = getResources().getStringArray(R.array.station);
+        String searchURL = Constants.getURL( stationNo[fromStation], stationNo[toStation], 14);
+        new DoInBackground().execute(searchURL);
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 
@@ -65,7 +103,13 @@ public class Travels extends Fragment {
 
         @Override
         protected void onPostExecute (Long result){
-            finishedSearch();
+
+            adapter.notifyDataSetChanged();
+            for (Journey si :journeyList){
+                Log.i("ExpFragment", "moment" + si.getStartStation().getStationName());
+
+            }
+
         }
     }
 }
