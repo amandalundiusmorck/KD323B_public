@@ -45,6 +45,7 @@ public class Travels extends Fragment implements AdapterView.OnItemSelectedListe
         adapter = new Adapter(getActivity(),journeyList);
         expl.setAdapter(adapter);
 
+        spinnerFrom.setSelection(1);
         spinnerFrom.setOnItemSelectedListener(this);
         spinnerTo.setOnItemSelectedListener(this);
 
@@ -81,7 +82,7 @@ public class Travels extends Fragment implements AdapterView.OnItemSelectedListe
         int fromStation = spinnerFrom.getSelectedItemPosition();
         int toStation = spinnerTo.getSelectedItemPosition();
 
-        String[] stationNo = getResources().getStringArray(R.array.station);
+        String[] stationNo = getResources().getStringArray(R.array.stationNumbers);
         String searchURL = Constants.getURL( stationNo[fromStation], stationNo[toStation], 14);
         new DoInBackground().execute(searchURL);
 
