@@ -72,8 +72,12 @@ public class Parser {
 				String fromStationID ="";
 				for (int j =0;j < fromNode.getLength();j++){
 					Element e2 = (Element) fromNode.item(j);
-						fromStationName = parser.getValue(e2, "Name");
-						fromStationID =parser.getValue(e2, "Id");
+
+                    if (j == 0) {
+
+                        fromStationName = parser.getValue(e2, "Name");
+                        fromStationID = parser.getValue(e2, "Id");
+                    }
 				}
 				fromStation = new Station(fromStationName, fromStationID);	
 				

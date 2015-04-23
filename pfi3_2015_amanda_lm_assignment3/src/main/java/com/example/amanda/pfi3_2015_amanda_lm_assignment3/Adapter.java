@@ -39,14 +39,14 @@ public class Adapter extends BaseExpandableListAdapter{
         LayoutInflater li = (LayoutInflater) this.c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = li.inflate(R.layout.list_collapsed,null);
 
-        Journey journey = j.get(groupPosition);
+        //Journey journey = j.get(groupPosition);
 
         TextView depTime = (TextView) convertView.findViewById(R.id.depTime);
-        String departure = journey.getDepDateTime().toString();
+        String departure = "Linje " + j.get(groupPosition).getLineOnFirstJourney();
         depTime.setText(departure);
 
         TextView arrTime = (TextView) convertView.findViewById(R.id.arrTime);
-        String arrival = journey.getArrDateTime().toString();
+        String arrival = "Ankommer om " + j.get(groupPosition).getTimeToDeparture() + " min";
         arrTime.setText(arrival);
 
 
@@ -58,14 +58,19 @@ public class Adapter extends BaseExpandableListAdapter{
         LayoutInflater li = (LayoutInflater) this.c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = li.inflate(R.layout.list_expanded,null);
 
-        Journey journey = j.get(groupPosition);
+        //Journey journey = j.get(groupPosition);
 
         TextView depTimeDev = (TextView) convertView.findViewById(R.id.depTimeDev);
-        String deviation = journey.getDepTimeDeviation();
-        depTimeDev.setText(deviation);
+        if (j.get(groupPosition).getDepTimeDeviation() != "") {
+            String deviation = "Försening " + j.get(groupPosition).getDepTimeDeviation().toString() + " min";
+            depTimeDev.setText(deviation);
+        }else {
+            String deviation = "I tid";
+            depTimeDev.setText(deviation);
+        }
 
         TextView travelMinutes = (TextView) convertView.findViewById(R.id.travelMinutes);
-        String time = journey.getTravelMinutes();
+        String time = "Restid " + j.get(groupPosition).getTravelMinutes().toString() + " min";
         travelMinutes.setText(time);
 
         return convertView;

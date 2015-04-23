@@ -11,14 +11,16 @@
             android:layout_height="fill_parent">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/textViewFran"
                 android:id="@+id/textViewFran"
-                android:textColor="@android:color/black"
+                android:textColor="#ffffffff"
                 android:paddingTop="10dp"
-                android:paddingLeft="15dp" />
+                android:paddingLeft="15dp"
+                android:background="#ffff0505"
+                android:paddingBottom="7dip" />
 
             <Spinner
                 android:layout_width="match_parent"
@@ -30,16 +32,20 @@
                 android:layout_marginLeft="7dip"
                 android:layout_marginRight="7dip"
                 android:paddingTop="5dp"
-                android:paddingBottom="5dp" />
+                android:paddingBottom="5dp"
+                android:layout_marginBottom="7dip" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/textViewTill"
                 android:id="@+id/textViewTill"
-                android:textColor="@android:color/black"
-                android:paddingLeft="15dp" />
+                android:textColor="#ffffffff"
+                android:paddingLeft="15dp"
+                android:background="#ffff0505"
+                android:paddingBottom="7dip"
+                android:paddingTop="7dip" />
 
             <Spinner
                 android:layout_width="match_parent"
@@ -51,7 +57,8 @@
                 android:layout_marginLeft="7dip"
                 android:layout_marginRight="7dip"
                 android:paddingTop="5dp"
-                android:paddingBottom="5dp" />
+                android:paddingBottom="10dp"
+                android:layout_marginBottom="7dip" />
 
             <ExpandableListView
                 android:layout_width="fill_parent"
@@ -59,8 +66,9 @@
                 android:id="@+id/expandableListView"
                 android:layout_gravity="left|top"
                 android:groupIndicator="@null"
-                android:divider="@android:color/darker_gray"
-                android:dividerHeight="@dimen/customDivier"/>
+                android:divider="#ffffffff"
+                android:dividerHeight="@dimen/customDivier"
+                android:background="#2d6c6c6c"/>
         </LinearLayout>
 
 </FrameLayout>
